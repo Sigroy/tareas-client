@@ -9,14 +9,14 @@ const TareasList = () => {
     const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:3030/tareas")
+        fetch("https://api-tareas-ds.herokuapp.com")
             .then((res) => res.json())
             .then((data) => setTareas(data.data))
             .catch((err) => console.log(`Error: ${err}`));
     }, []);
 
     const getTareas = () => {
-        fetch("http://localhost:3030/tareas")
+        fetch("https://api-tareas-ds.herokuapp.com")
             .then((res) => res.json())
             .then((data) => setTareas(data.data))
             .catch((err) => console.log(`Error: ${err}`));
@@ -24,7 +24,7 @@ const TareasList = () => {
 
     const createTarea = (data) => {
         try {
-            fetch("http://localhost:3030/tareas", {
+            fetch("https://api-tareas-ds.herokuapp.com", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const TareasList = () => {
 
     const updateTarea = (tarea) => {
         try {
-            fetch(`http://localhost:3030/tareas/${tarea._id}`, {
+            fetch(`https://api-tareas-ds.herokuapp.com/${tarea._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const TareasList = () => {
 
     const deleteTarea = async (idx) => {
         try {
-            fetch(`http://localhost:3030/tareas/${idx}`, {
+            fetch(`https://api-tareas-ds.herokuapp.com/${idx}`, {
                 method: 'DELETE',
             }).then(response => response.json())
                 .then(dataResponse => {
